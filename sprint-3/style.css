@@ -1,0 +1,38 @@
+* {
+  font-family: "Solway", serif;
+}
+.nav_logo {
+  height: 50px;
+  width: 50px;
+}
+#img-card {
+  background-size: cover;
+  width: 100%;
+  height: 200px;
+  border-radius: 10px;
+}
+#cards {
+  height: 400px;
+  width: 300px;
+  border-radius: 10px;
+}
+.body {
+  margin: auto 0px;
+  padding: 0px;
+}
+#movies {
+  display: flex;
+  justify-content: center;
+  background-image: radial-gradient(
+    circle farthest-corner at 10% 20%,
+    rgb(255, 255, 255) 0%,
+    rgba(32, 45, 58, 1) 81.3%
+  );
+}
+#btn-nowPlaying {
+  height: 50px;
+  width: 80px;
+  border-radius: 10px;
+  margin-left: auto;
+  margin-right: auto;
+}
