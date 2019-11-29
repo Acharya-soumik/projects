@@ -27,6 +27,8 @@
     rgb(255, 255, 255) 0%,
     rgba(32, 45, 58, 1) 81.3%
   );
+  overflow-y: hidden;
+  overflow-x: scroll;
 }
 #btn-nowPlaying {
   height: 50px;
@@ -36,9 +38,11 @@
   margin-right: auto;
 }
 #playlist {
-  overflow-y: auto;
-  height: 30rem;
-  width: 100%;
+  overflow-y: hidden;
+  display: flex !important;
+  overflow-x: scroll;
+  padding: 2rem;
+  height: 37rem;
 }
 .card:hover {
   background-color: black;
