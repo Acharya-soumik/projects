@@ -17,12 +17,11 @@
   border-radius: 10px;
 }
 .body {
-  margin: auto 0px;
-  padding: 0px;
+  margin: 0px;
 }
 #movies {
   display: flex;
-  justify-content: center;
+  /* justify-content: center; */
   background-image: radial-gradient(
     circle farthest-corner at 10% 20%,
     rgb(255, 255, 255) 0%,
@@ -35,4 +34,30 @@
   border-radius: 10px;
   margin-left: auto;
   margin-right: auto;
+}
+#playlist {
+  overflow-y: auto;
+  height: 30rem;
+  width: 100%;
+}
+.card:hover {
+  background-color: black;
+  color: white;
+  transform: scale(1.1);
+  transition: 0.1s;
+}
+#playlist img {
+  height: 15rem;
+  border-radius: 5px;
+}
+#movies img {
+  height: 20rem;
+}
+#movies .card {
+  overflow-y: scroll;
+  overflow-x: hidden;
+  height: 30rem;
+}
+footer {
+  margin-top: 40px;
 }

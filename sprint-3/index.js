@@ -42,7 +42,7 @@ function createCard(poster, title, overview, release_date) {
   return card;
 }
 // reviews
-$("#btn-nowPlaying").click(function() {
+$(document).ready(function() {
   var xhrNowPlaying = new XMLHttpRequest();
   xhrNowPlaying.open(
     "GET",
