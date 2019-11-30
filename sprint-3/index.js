@@ -1,5 +1,5 @@
 // Search button
-$("#btn-search").click(function() {
+$("#btn-search").click(function () {
   // Removing previuos search
   $("#movies > div").remove();
   // taking input
@@ -11,14 +11,14 @@ function searchMovie(userSearch) {
   xhr.open(
     "GET",
     "https://api.themoviedb.org/3/search/movie?api_key=2bd7a379f3b9051975fb5321f24bf04a" +
-      "&query=" +
-      userSearch
+    "&query=" +
+    userSearch
   );
   xhr.send();
-  xhr.onload = function() {
+  xhr.onload = function () {
     if (xhr.status == 200) {
       var response = JSON.parse(xhr.response);
-      response.results.forEach(function(ele) {
+      response.results.forEach(function (ele) {
         $("#movies").append(
           createCard(ele.poster_path, ele.title, ele.overview, ele.release_date)
         );
@@ -36,24 +36,24 @@ function createCard(poster, title, overview, release_date) {
   <div class="card-body h-30">
   <p class="card-text">${title}</p>
   <p class="card-text">${release_date}</p>
-  <p class="card-text">${overview.substr(0, 150)}</p>
+  <p class="card-text id="description">${overview}</p>
   </div>
   </div>`;
   return card;
 }
 // reviews
-$(document).ready(function() {
+$(document).ready(function () {
   var xhrNowPlaying = new XMLHttpRequest();
   xhrNowPlaying.open(
     "GET",
     "https://api.themoviedb.org/3/movie/now_playing?api_key=2bd7a379f3b9051975fb5321f24bf04a&language=en-US&page=1"
   );
   xhrNowPlaying.send();
-  xhrNowPlaying.onload = function() {
+  xhrNowPlaying.onload = function () {
     if (xhrNowPlaying.status == 200) {
       var storeObj = JSON.parse(xhrNowPlaying.response);
       var storeObj = storeObj.results;
-      storeObj.forEach(function(ele) {
+      storeObj.forEach(function (ele) {
         $("#playlist").append(
           newPlaylist(
             ele.original_title,
@@ -75,7 +75,7 @@ function newPlaylist(title, poster, description, popularity) {
           <div class="card-body h-30">
           <p class="card-text">${title}</p>
           <p class="card-text">Popularity:${popularity}</p>
-          <p class="card-text">${description.substr(0, 100)}</p>
+          <p class="card-text" id="description">${description}</p>
           </div>
           </div>`;
   return card;

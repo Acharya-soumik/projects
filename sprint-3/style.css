@@ -65,3 +65,12 @@
 footer {
   margin-top: 40px;
 }
+.card-body {
+  height: 30rem;
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+#description{
+	font-size: 10px
+}
+
