@@ -31,7 +31,7 @@ function searchMovie(userSearch) {
 }
 function createCard(poster, title, overview, release_date) {
   var card = "";
-  card = `<div class="m-2 card col-2" >
+  card = `<div class="m-2 card col-12 col-sm-6 col-md-3 col-lg-2" >
   <img class="card-img-top" src="https://image.tmdb.org/t/p/w500/${poster}" alt="Card image cap">
   <div class="card-body h-30">
   <p class="card-text">${title}</p>
@@ -70,7 +70,7 @@ $(document).ready(function() {
 });
 function newPlaylist(title, poster, description, popularity) {
   var card = "";
-  card = `<div class="m-2 card col-lg-2">
+  card = `<div class="m-2 card col-12 col-sm-6 col-md-3 col-lg-2">
           <img class="card-img-top" src="https://image.tmdb.org/t/p/w500/${poster}" alt="Card image cap">
           <div class="card-body h-30">
           <p class="card-text">${title}</p>
