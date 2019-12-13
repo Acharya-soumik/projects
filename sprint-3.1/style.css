@@ -1,0 +1,60 @@
+h1 {
+  font-family: "Lakki Reddy", cursive;
+}
+#home {
+  background: rgb(6, 5, 5);
+  background: linear-gradient(
+      142deg,
+      rgba(6, 5, 5, 0.5) 24%,
+      rgba(11, 96, 44, 0.5) 65%,
+      rgba(93, 215, 99, 0.5) 82%,
+      rgba(241, 249, 244, 0.5) 100%
+    ),
+    url("https://i.pinimg.com/originals/cb/8f/26/cb8f267b7cb85ebc47260c0c6e028fa3.jpg");
+  top: 0;
+  left: 0;
+  width: 100%;
+  min-height: 700px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  /* filter: blur(2px); */
+}
+.bg-dark {
+  background-color: rgba(2, 10, 2, 0.705) !important;
+}
+#icons {
+  background: rgb(6, 5, 5);
+  background: linear-gradient(
+    142deg,
+    rgb(0, 0, 0) 24%,
+    rgba(11, 96, 44, 0.8) 65%,
+    rgba(37, 117, 41, 0.8) 82%,
+    rgba(2, 29, 12, 0.8) 100%
+  );
+}
+#card-img {
+  height: 10rem;
+}
+
+.card .overlay {
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.8);
+  opacity: 0;
+}
+.card:hover .overlay {
+  opacity: 1;
+  color: white;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  text-align: center;
+  font-size: 2.5rem;
+}
+#topGamesCard {
+  margin: 5px;
+}
+div .card-body {
+  background-color: rgba(0, 0, 0, 0.6) !important;
+  color: wheat;
+}
