@@ -1,7 +1,7 @@
-h1 {
+* {
   font-family: "Lakki Reddy", cursive;
 }
-#home {
+body {
   background: rgb(6, 5, 5);
   background: linear-gradient(
       142deg,
@@ -21,16 +21,6 @@ h1 {
 }
 .bg-dark {
   background-color: rgba(2, 10, 2, 0.705) !important;
-}
-#icons {
-  background: rgb(6, 5, 5);
-  background: linear-gradient(
-    142deg,
-    rgb(0, 0, 0) 24%,
-    rgba(11, 96, 44, 0.8) 65%,
-    rgba(37, 117, 41, 0.8) 82%,
-    rgba(2, 29, 12, 0.8) 100%
-  );
 }
 #card-img {
   height: 10rem;
@@ -57,4 +47,19 @@ h1 {
 div .card-body {
   background-color: rgba(0, 0, 0, 0.6) !important;
   color: wheat;
+}
+#icons {
+  opacity: 0.5;
+}
+#icons .d-block {
+  border-radius: 30px 60px;
+}
+#head {
+  padding-top: 9vh !important;
+}
+#rating {
+  font-size: 1.5rem;
+}
+#jumbotron {
+  background-color: rgba(0, 0, 0, 0) !important;
 }

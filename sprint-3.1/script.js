@@ -41,13 +41,13 @@ function loaddata(data) {
 }
 function topGames(name, image, rating, id) {
   var card = "";
-  card = `<div class="card bg-dark" id="topGamesCard" style="width: 18rem; m-2">
+  card = `<div class="card bg-dark " id="topGamesCard" style="width: 18rem; m-2">
               <img class="card-img-top img-fluid" id="card-img" src="${image}" alt="Card image cap">
-              <h5 class="card-title text-center text-light">${name}</h5>
+              <h5 class="card-title text-center text-light pt-4">${name}</h5>
               <div class="overlay w-80 text-center">
-              <p class="card-text text-center">Rating:${rating}</p>
-              <button class="btn btn-outline-light" onclick=linkWeb(${id})>view more</button>
-              <button class="btn btn-outline-light" onclick=trailer(${id})>watch trailer</button>
+              <p class="card-text text-center pt-4" id="rating">Rating:${rating}</p>
+              <button class="btn btn-outline-light" onclick=linkWeb(${id})>Buy Now</button>
+              <button class="btn btn-outline-light" data-toggle="modal" data-target=".bd-example-modal-lg" onclick=showDetails(${id})>view more</button>
               </div>
           </div>`;
   return card;
@@ -55,14 +55,13 @@ function topGames(name, image, rating, id) {
 function linkWeb(id) {
   let baseUrl = "https://api.rawg.io/api/games/";
   let url = baseUrl + id + "/stores";
-  // console.log(url);
   var xml = new XMLHttpRequest();
   xml.open("GET", url);
   xml.send();
   xml.onload = function() {
     if (xml.status == 200) {
       var urlData = JSON.parse(xml.response);
-      var link = urlData.results[0];
+      var link = urlData.results[1];
       link = link.url;
       window.location = link;
     } else {
@@ -71,25 +70,7 @@ function linkWeb(id) {
   };
 }
 
-function trailer(id) {
-  let baseUrl = "https://api.rawg.io/api/games/";
-  let url = baseUrl + id + "/movies";
-  // console.log(url);
-  let xhrNew = new XMLHttpRequest();
-  xhrNew.open("GET", url);
-  xhrNew.send();
-  xhrNew.onload = function() {
-    if (xhrNew.status == 200) {
-      var trailerData = JSON.parse(xhrNew.response);
-      // var trailerLink = trailerData;
-      // tLink = trailerLink.url;
-      // // window.location = tlink;
-      // console.log(trailerData);
-    } else {
-      alert("Something went wrong");
-    }
-  };
-}
+function showDetails() {}
 
 function changePage() {
   var i = 10;
