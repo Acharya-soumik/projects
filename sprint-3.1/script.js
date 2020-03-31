@@ -1,8 +1,10 @@
 // Most Anticipated Games By date
 var myData = [];
+var page_no = 1;
 $(document).ready(function() {
-  var page = "https://api.rawg.io/api/games";
-  var xhr = new XMLHttpRequest();
+  var page =
+    "https://api.rawg.io/api/games?dates=2019-09-01,2020-02-20&page_size=12";
+  let xhr = new XMLHttpRequest();
   xhr.open("GET", page);
   xhr.send();
 
@@ -12,34 +14,24 @@ $(document).ready(function() {
       gameData = JSON.parse(gameData);
       Page = gameData.page;
       result = gameData.results;
-      myData = result;
-      loaddata(result);
-      // console.log(myData);
-      // let = 0;
-      // var newResult = result.slice(i, 6);
-      // i += 12;
-      //
-      //
-      // console.log(newResult);
-      // result = result.slice(0, 12);
-      // console.log(result);
-      // var i = 0;
       result.forEach(function(ele) {
-        // var j = 0;
         $("#showGames").append(
-          topGames(ele.name, ele.background_image, ele.rating, ele.id)
+          topGames(
+            ele.name,
+            ele.background_image,
+            ele.rating,
+            ele.id,
+            ele.clip.clip
+          )
         );
       });
     } else {
-      // console.log(xhr.response);
+      console.log(xhr.response);
     }
   };
 });
-function loaddata(data) {
-  myData = data;
-  console.log(myData);
-}
-function topGames(name, image, rating, id) {
+function topGames(name, image, rating, id, link) {
+  console.log(link);
   var card = "";
   card = `<div class="card bg-dark " id="topGamesCard" style="width: 18rem; m-2">
               <img class="card-img-top img-fluid" id="card-img" src="${image}" alt="Card image cap">
@@ -47,8 +39,8 @@ function topGames(name, image, rating, id) {
               <div class="overlay w-80 text-center">
               <p class="card-text text-center pt-4" id="rating">Rating:${rating}</p>
               <button class="btn btn-outline-light" onclick=linkWeb(${id})>Buy Now</button>
-              <button class="btn btn-outline-light" data-toggle="modal" data-target=".bd-example-modal-lg" onclick=showDetails(${id})>view more</button>
-              </div>
+              <button class="btn btn-outline-light" data-toggle="modal" data-target=".bd-example-modal-lg" onclick=showDetails("${link}") >watch trailer</button>
+              </div>  "some link"  "some link"
           </div>`;
   return card;
 }
@@ -70,19 +62,31 @@ function linkWeb(id) {
   };
 }
 
-function showDetails() {}
-
 function changePage() {
-  var i = 10;
+  this.page_no += 1;
   $(".card").remove();
-  let result = myData;
-  result = result.slice(i, i + 10);
-  // var i = 0;
-  result.forEach(function(ele) {
-    // var j = 0;
-    $("#showGames").append(
-      topGames(ele.name, ele.background_image, ele.rating, ele.id)
-    );
-  });
-  i += 10;
+  var page = `https://api.rawg.io/api/games?dates=2019-09-01,2019-09-30&page=${page_no}&page_size=12`;
+  let xhr = new XMLHttpRequest();
+  xhr.open("GET", page);
+  xhr.send();
+
+  xhr.onload = function() {
+    if (xhr.status == 200) {
+      var gameData = xhr.response;
+      gameData = JSON.parse(gameData);
+      Page = gameData.page;
+      result = gameData.results;
+      result.forEach(function(ele) {
+        $("#showGames").append(
+          topGames(ele.name, ele.background_image, ele.rating, ele.id)
+        );
+      });
+    } else {
+      console.log(xhr.response);
+    }
+  };
+}
+
+function showDetails(url) {
+  window.open(url);
 }
