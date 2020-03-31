@@ -14,6 +14,7 @@ $(document).ready(function() {
       gameData = JSON.parse(gameData);
       Page = gameData.page;
       result = gameData.results;
+      console.log(result);
       result.forEach(function(ele) {
         $("#showGames").append(
           topGames(
@@ -91,7 +92,13 @@ function changePage(new_page) {
       $(".card").remove();
       result.forEach(function(ele) {
         $("#showGames").append(
-          topGames(ele.name, ele.background_image, ele.rating, ele.id)
+          topGames(
+            ele.name,
+            ele.background_image,
+            ele.rating,
+            ele.id,
+            ele.clip.clip
+          )
         );
       });
     } else {
