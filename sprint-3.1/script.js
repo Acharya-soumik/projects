@@ -31,7 +31,6 @@ $(document).ready(function() {
   };
 });
 function topGames(name, image, rating, id, link) {
-  console.log(link);
   var card = "";
   card = `<div class="card bg-dark " id="topGamesCard" style="width: 18rem; m-2">
               <img class="card-img-top img-fluid" id="card-img" src="${image}" alt="Card image cap">
@@ -61,11 +60,24 @@ function linkWeb(id) {
     }
   };
 }
+function prevPage() {
+  if (this.page_no > 1) {
+    this.page_no -= 1;
+    changePage(this.page_no);
+  } else {
+    alert("can't go back");
+  }
+}
 
-function changePage() {
+function nextPage() {
   this.page_no += 1;
-  $(".card").remove();
-  var page = `https://api.rawg.io/api/games?dates=2019-09-01,2019-09-30&page=${page_no}&page_size=12`;
+  if (this.page_no >= 1) {
+    changePage(this.page_no);
+  }
+}
+
+function changePage(new_page) {
+  var page = `https://api.rawg.io/api/games?dates=2019-09-01,2019-09-30&page=${new_page}&page_size=12`;
   let xhr = new XMLHttpRequest();
   xhr.open("GET", page);
   xhr.send();
@@ -76,13 +88,14 @@ function changePage() {
       gameData = JSON.parse(gameData);
       Page = gameData.page;
       result = gameData.results;
+      $(".card").remove();
       result.forEach(function(ele) {
         $("#showGames").append(
           topGames(ele.name, ele.background_image, ele.rating, ele.id)
         );
       });
     } else {
-      console.log(xhr.response);
+      console.log(xhr.status);
     }
   };
 }
